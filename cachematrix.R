@@ -1,15 +1,13 @@
 #############################################################  
-# Description:
-# MakeCacheMatrix() caches a Matrix and value of solve.
-# cacheSolve() returns value of solve by obtaining from the cache
-# or calculating the inverse of matrix.
+# Description: functions that cache the inverse of a matrix.
 #
 # version   date        reason                Author
 # 1.0       23/12/2015  Initial Version       Victor Saraiva
 #############################################################
 
 
-# MakeCacheMatrix() caches a matrix and value of solve.
+# MakeCacheMatrix() creates a special "matrix" object
+# that can cache its inverse.
 # get() returns the cached atrix
 # set() caches a new matrix
 # setsolve caches the value of an inversed atrix
@@ -37,8 +35,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-# cacheSolve return a matrix that is the inverse of 'x'
-# by retrieving from the cache or calculating it
+# cacheSolve computes the inverse of the special
+# "matrix" returned by `makeCacheMatrix` above. If the inverse has
+# already been calculated (and the matrix has not changed), then
+# `cacheSolve` should retrieve the inverse from the cache.
 
 cacheSolve <- function(x, ...) {
   # Is it in the cache?      
